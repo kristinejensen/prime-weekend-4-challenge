@@ -9,6 +9,14 @@ $('#createTaskButton').on('click', function(){
   newTaskObject.dueDate = $('#newTaskDueDate').val();
   newTaskObject.complete = null;
   console.log(newTaskObject);
+  $.ajax ({
+    type: 'POST',
+    url: '/tasks/new',
+    data: newTaskObject,
+    success: function(response){
+      console.log(response);
+    } // end of ajax success function
+  })// end of ajax
 }); // end of click listener
 
 
