@@ -11,6 +11,31 @@ var config = {
 
 var pool = new pg.Pool(config);
 
+router.get('/', function(req, res){
+  pool.connect(function(errorConnectingToDatabase, client, done){
+    if(errorConnectingToDatabase) {
+      console.log('Error connecting to database: ', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      client.query('SELECT * FROM tasks;', function(errorMakingQuery, result){
+        done();
+        if(errorMakingQuery){
+          console.log('Error making the database query: ', errorMakingQuery);
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+          console.log(result.rows);
+        }
+      });
+    }
+  }); // end of pool.connect
+}); // end of router.get
+
+
+
+
+
+
 router.post('/new', function(req, res){
   var newTask = req.body;
 
@@ -31,7 +56,9 @@ router.post('/new', function(req, res){
         }
       });
     }
-  }); // end of pool.connect
+  });
 }); // end of router post function
+
+
 
 module.exports = router;
