@@ -13,6 +13,7 @@ $(document).ready(function(){
         for (var i = 0; i < response.length; i++) {
           var currentTask = response[i];
           var $newTask = $('<tr>');
+          $newTask.data('id', currentTask.id);
           $newTask.append('<td class="taskColor">' + currentTask.task_name + '</td>');
           $newTask.append('<td class="taskColor">' + currentTask.details + '</td>');
           $newTask.append('<td class="taskColor">' + currentTask.due_date + '</td>');

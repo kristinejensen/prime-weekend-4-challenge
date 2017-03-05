@@ -8,6 +8,7 @@
 - [x] when the task is created, it should be stored inside of a database
 - [x] when complete, the background of the task container should change
 
-- [ ] when complete, the complete option should be 'checked off' - partially complete
+
 - [ ] when complete, the database should reflect this update
 - [ ] deleting a task should remove it both from the front end as well as the database
+- [ ] when complete, the complete option should be 'checked off' - partially complete
