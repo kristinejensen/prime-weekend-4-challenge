@@ -1,5 +1,3 @@
-console.log('the server is running');
-
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');

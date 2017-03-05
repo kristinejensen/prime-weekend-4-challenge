@@ -24,7 +24,6 @@ router.get('/', function(req, res){
           res.sendStatus(500);
         } else {
           res.send(result.rows);
-          console.log(result.rows);
         }
       });
     }
@@ -55,21 +54,27 @@ router.post('/new', function(req, res){
 }); // end of router post function
 
 
-// router.put('/complete/:id', function(req, res){
-//   var taskID = req.params.id;
-//   var taskObject = req.body;
-//   console.log('the task object is: ', taskObject);
-//   console.log('id of task to save: ', taskID);
-//   pool.connect(function(errorConnectingToDatabase, client, done){
-//     if(errorConnectingToDatabase) {
-//       console.log('Error connecting to database: ', errorConnectingToDatabase);
-//       res.sendStatus(500);
-//     }else{
-//     client.query('UPDATE tasks SET ')
-//     }
-//   });
-// }); // end of router put function
-
-
+router.put('/complete/:id', function(req, res){
+  var taskID = req.params.id;
+  var taskObject = req.body;
+  pool.connect(function(errorConnectingToDatabase, client, done){
+    if(errorConnectingToDatabase) {
+      console.log('Error connecting to database: ', errorConnectingToDatabase);
+      res.sendStatus(500);
+    }else{
+      client.query('UPDATE tasks SET complete=$1 WHERE id=$2;',
+      [taskObject.complete, taskID],
+      function(errorMakingQuery, result) {
+        done();
+        if(errorMakingQuery) {
+          console.log('Error making the database query: ', errorMakingQuery);
+          res.sendStatus(500);
+        }else{
+          res.sendStatus(200);
+        }
+      });
+    }
+  });
+}); // end of router put function
 
 module.exports = router;

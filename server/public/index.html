@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <script src="vendors/jquery.js" charset="utf-8"></script>
-    <script src="scripts/client.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="styles.css">
-    <title>Weekend 4 Challenge</title>
-  </head>
-  <body>
-    <h1>My Task List</h1>
-    <h3>Submit a new task!</h3>
-    <form id="newTaskForm">
-      <label for="task">Task: </label>
-      <input type="text" name="task" placeholder="Enter new task" id="newTaskName">
-      <label for="taskDetails">Task Details: </label>
-      <input type="text" name="taskDetails" placeholder="Enter task details" id="newTaskDetails">
-      <label for="dueDate">Due Date: </label>
-      <input type="text" name="dueDate" placeholder="Enter due date" id="newTaskDueDate">
-      <button type="button" id="createTaskButton">Create Task</button>
-    </form>
-    <table>
-      <thead>
-        <tr>
-          <th>Task</th>
-          <th>Details</th>
-          <th>Due Date</th>
-          <th>Complete</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody id="taskListDisplay">
-        <tr>
-          <td id="displayNewTask"></td>
-          <td id="displayNewTaskDetails"></td>
-          <td id="displayNewTaskDueDate"></td>
-          <td id="displayCompleteButton"></td>
-          <td id="displayDeleteButton"></td>
-        </tr>
-      </tbody>
-    </table>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <script src="vendors/jquery.js" charset="utf-8"></script>
+  <script src="scripts/client.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="styles.css">
+  <title>Weekend 4 Challenge</title>
+</head>
+<body>
+  <h1>My Task List</h1>
+  <h3>Submit a new task!</h3>
+  <form id="newTaskForm">
+    <label for="task">Task: </label>
+    <input type="text" name="task" placeholder="Enter new task" id="newTaskName">
+    <label for="taskDetails">Task Details: </label>
+    <input type="text" name="taskDetails" placeholder="Enter task details" id="newTaskDetails">
+    <label for="dueDate">Due Date: </label>
+    <input type="text" name="dueDate" placeholder="Enter due date" id="newTaskDueDate">
+    <button type="button" id="createTaskButton">Create Task</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Details</th>
+        <th>Due Date</th>
+        <th>Complete</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody id="taskListDisplay">
+      <tr>
+        <td id="displayNewTask"></td>
+        <td id="displayNewTaskDetails"></td>
+        <td id="displayNewTaskDueDate"></td>
+        <td id="displayCompleteButton"></td>
+        <td id="displayDeleteButton"></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
 </html>

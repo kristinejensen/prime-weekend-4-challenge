@@ -8,7 +8,6 @@ $(document).ready(function(){
       type: 'GET',
       url: '/tasks',
       success: function(response){
-        console.log(response);
         $('#taskListDisplay').empty();
         for (var i = 0; i < response.length; i++) {
           var currentTask = response[i];
@@ -32,20 +31,17 @@ $(document).ready(function(){
     newTaskObject.taskDetails = $('#newTaskDetails').val();
     newTaskObject.dueDate = $('#newTaskDueDate').val();
     newTaskObject.complete = null;
-    console.log(newTaskObject);
     $.ajax ({
       type: 'POST',
       url: '/tasks/new',
       data: newTaskObject,
       success: function(response){
-        console.log(response);
         displayAllTasks();
       }
     })
   }); // end of click listener
 
   $('#taskListDisplay').on('click', '.completeButton', function(){
-    console.log('complete button clicked');
     $(this).css('background-color', 'SeaGreen');
     $(this).parent().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
     $(this).parent().prev().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
@@ -55,16 +51,14 @@ $(document).ready(function(){
     var taskObjectToUpdate = {
       complete: completeStatus
     }
-    console.log(taskObjectToUpdate);
-    // $.ajax({
-    //   type: 'PUT',
-    //   url: '/tasks/complete',
-    //   data: taskObjectToUpdate,
-    //   success: function(response){
-    //     console.log(response);
-    //     displayAllTasks();
-    //   } // end of ajax success function
-    // }) // end of ajax call
+    $.ajax({
+      type: 'PUT',
+      url: '/tasks/complete/' + idOfTaskToUpdate,
+      data: taskObjectToUpdate,
+      success: function(response){
+        console.log(response);
+      } // end of ajax success function
+    }) // end of ajax call
   }); // end of complete button listener
 
 
