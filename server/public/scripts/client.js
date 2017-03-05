@@ -13,13 +13,21 @@ $(document).ready(function(){
         for (var i = 0; i < response.length; i++) {
           var currentTask = response[i];
           var $newTask = $('<tr>');
-          $newTask.append('<td>' + currentTask.task_name + '</td>');
-          $newTask.append('<td>' + currentTask.details + '</td>');
-          $newTask.append('<td>' + currentTask.due_date + '</td>');
-          $newTask.append('<button id="completeButton">Complete</button>');
-          $newTask.append('<button id="deleteButton">Delete</button>');
+          $newTask.append('<td class="taskColor">' + currentTask.task_name + '</td>');
+          $newTask.append('<td class="taskColor">' + currentTask.details + '</td>');
+          $newTask.append('<td class="taskColor">' + currentTask.due_date + '</td>');
+          $newTask.append('<td><button class="completeButton">Complete</button></td>');
+          $newTask.append('<td><button class="deleteButton">Delete</button></td>');
           $('#taskListDisplay').append($newTask);
-        }
+        } // end of for loop
+
+          $('.completeButton').on('click', function(){
+            console.log('complete button clicked');
+            $(this).css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
+            $(this).parent().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
+            $(this).parent().prev().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
+            $(this).parent().prev().prev().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
+          }); // end of complete button listener
       } // end of ajax response function
     }); // end of ajax call
   } // end of displayAllTasks function
@@ -44,34 +52,11 @@ $(document).ready(function(){
   }); // end of click listener
 
 
-
-
 }); // end of document ready
 
-// dispalyAllTasks(); // calling dispalyAllTasks function when page loads to display full task list
-// function displayAllTasks(){
-//   $.ajax({
-//     type: 'GET',
-//     url: '/tasks',
-//     success: function(response) {
-//       $('#taskListDisplay').empty();
-//   $('#createTaskButton').on('click', function(){
-//     console.log('button clicked');
-//     $('#displayNewTask').append($('#newTaskName').val());
-//     $('#displayNewTaskDetails').append($('#newTaskDetails').val());
-//     $('#displayNewTaskDueDate').append($('#newTaskDueDate').val());
-//     $('#displayCompleteButton').append('<button type="button" id="completeButton">Complete</button>');
-//     $('#displayDeleteButton').append('<button type="button" id="deleteButton">Delete</button>');
-//   }); // end of create task button listener
-// } // end of success function
-// }); // end of ajax call
-// } // end of dispalyAllTasks function
 
 
-// $('#completeButton').on('click', function(){
-//   console.log('complete button clicked');
-// }); // end of complete button listener
-//
+
 // $('#deleteButton').on('click', function(){
 //   console.log('delete button clicked');
 // }); // end of delete button listener
