@@ -46,10 +46,25 @@ $(document).ready(function(){
 
   $('#taskListDisplay').on('click', '.completeButton', function(){
     console.log('complete button clicked');
-    $(this).css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
+    $(this).css('background-color', 'SeaGreen');
     $(this).parent().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
     $(this).parent().prev().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
     $(this).parent().prev().prev().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
+    var idOfTaskToUpdate = $(this).parent().parent().data().id;
+    var completeStatus = 'yes';
+    var taskObjectToUpdate = {
+      complete: completeStatus
+    }
+    console.log(taskObjectToUpdate);
+    // $.ajax({
+    //   type: 'PUT',
+    //   url: '/tasks/complete',
+    //   data: taskObjectToUpdate,
+    //   success: function(response){
+    //     console.log(response);
+    //     displayAllTasks();
+    //   } // end of ajax success function
+    // }) // end of ajax call
   }); // end of complete button listener
 
 
