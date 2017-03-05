@@ -31,11 +31,6 @@ router.get('/', function(req, res){
   }); // end of pool.connect
 }); // end of router.get
 
-
-
-
-
-
 router.post('/new', function(req, res){
   var newTask = req.body;
 
@@ -58,6 +53,22 @@ router.post('/new', function(req, res){
     }
   });
 }); // end of router post function
+
+
+// router.put('/complete/:id', function(req, res){
+//   var taskID = req.params.id;
+//   var taskObject = req.body;
+//   console.log('the task object is: ', taskObject);
+//   console.log('id of task to save: ', taskID);
+//   pool.connect(function(errorConnectingToDatabase, client, done){
+//     if(errorConnectingToDatabase) {
+//       console.log('Error connecting to database: ', errorConnectingToDatabase);
+//       res.sendStatus(500);
+//     }else{
+//     client.query('UPDATE tasks SET ')
+//     }
+//   });
+// }); // end of router put function
 
 
 

@@ -21,14 +21,6 @@ $(document).ready(function(){
           $newTask.append('<td><button class="deleteButton">Delete</button></td>');
           $('#taskListDisplay').append($newTask);
         } // end of for loop
-
-          $('.completeButton').on('click', function(){
-            console.log('complete button clicked');
-            $(this).css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
-            $(this).parent().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
-            $(this).parent().prev().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
-            $(this).parent().prev().prev().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
-          }); // end of complete button listener
       } // end of ajax response function
     }); // end of ajax call
   } // end of displayAllTasks function
@@ -51,6 +43,14 @@ $(document).ready(function(){
       }
     })
   }); // end of click listener
+
+  $('#taskListDisplay').on('click', '.completeButton', function(){
+    console.log('complete button clicked');
+    $(this).css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
+    $(this).parent().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
+    $(this).parent().prev().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
+    $(this).parent().prev().prev().prev().css({'background-color': 'SeaGreen', 'text-decoration': 'line-through'});
+  }); // end of complete button listener
 
 
 }); // end of document ready
