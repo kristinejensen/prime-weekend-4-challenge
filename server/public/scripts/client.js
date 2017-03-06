@@ -70,7 +70,7 @@ $(document).ready(function(){
         console.log(response);
       } // end of ajax success function
     })//end of ajax call
-    // $(this).parent().parent().empty();
+    $(this).parent().parent().empty();
   }); // end of delete button listener
 
 
