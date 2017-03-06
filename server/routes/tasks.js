@@ -27,12 +27,11 @@ router.get('/', function(req, res){
         }
       });
     }
-  }); // end of pool.connect
-}); // end of router.get
+  });
+});
 
 router.post('/new', function(req, res){
   var newTask = req.body;
-
   pool.connect(function(errorConnectingToDatabase, client, done){
     if(errorConnectingToDatabase) {
       console.log('Error connecting to database: ', errorConnectingToDatabase);
@@ -51,7 +50,7 @@ router.post('/new', function(req, res){
       });
     }
   });
-}); // end of router post function
+});
 
 router.put('/complete/:id', function(req, res){
   var taskID = req.params.id;
@@ -74,7 +73,7 @@ router.put('/complete/:id', function(req, res){
       });
     }
   });
-}); // end of router put function
+});
 
 router.delete('/delete/:id', function(req, res){
   var taskID = req.params.id;
@@ -97,6 +96,6 @@ router.delete('/delete/:id', function(req, res){
       });
     }
   });
-}); // end of router.delete
+});
 
 module.exports = router;

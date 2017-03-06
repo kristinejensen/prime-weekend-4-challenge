@@ -1,3 +1,39 @@
+body {
+  font-family: Geneva;
+}
+
+h1 {
+  text-align: center;
+}
+
+h4 {
+  border-left: 6px solid SeaGreen;
+  background-color: LightGrey;
+}
+
+th, td {
+  border-bottom: 1px solid DimGrey;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  width: 50%;
+}
+
+th {
+  height: 50px;
+  text-align: left;
+}
+
+td {
+  height: 25px;
+}
+
+#createTaskButton {
+  margin-bottom: 25px;
+}
+
 .taskColor {
   background-color: LightGrey;
 }
