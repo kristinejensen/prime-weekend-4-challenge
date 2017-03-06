@@ -53,7 +53,6 @@ router.post('/new', function(req, res){
   });
 }); // end of router post function
 
-
 router.put('/complete/:id', function(req, res){
   var taskID = req.params.id;
   var taskObject = req.body;
@@ -76,5 +75,28 @@ router.put('/complete/:id', function(req, res){
     }
   });
 }); // end of router put function
+
+router.delete('/delete/:id', function(req, res){
+  var taskID = req.params.id;
+  console.log('ID of task to delete: ', taskID);
+  pool.connect(function(errorConnectingToDatabase, client, done){
+    if(errorConnectingToDatabase){
+      console.log('Error connecting to database: ', errorConnectingToDatabase);
+      res.sendStatus(500);
+    }else{
+      client.query('DELETE FROM tasks WHERE id=$1:',
+      [taskID],
+      function(errorMakingQuery, result){
+        done();
+        if(errorMakingQuery){
+          console.log('Error making the database query: ', errorMakingQuery);
+          res.sendStatus(500);
+        }else{
+          res.sendStatus(200)
+        }
+      });
+    }
+  });
+}); // end of router.delete
 
 module.exports = router;

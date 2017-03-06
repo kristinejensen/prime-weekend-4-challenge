@@ -61,12 +61,17 @@ $(document).ready(function(){
     }) // end of ajax call
   }); // end of complete button listener
 
+  $('#taskListDisplay').on('click', '.deleteButton', function(){
+    var idOfTaskToDelete = $(this).parent().parent().data().id;
+    $.ajax({
+      type: 'DELETE',
+      url: '/tasks/delete/' + idOfTaskToDelete,
+      success: function(response){
+        console.log(response);
+      } // end of ajax success function
+    })//end of ajax call
+    // $(this).parent().parent().empty();
+  }); // end of delete button listener
+
 
 }); // end of document ready
-
-
-
-
-// $('#deleteButton').on('click', function(){
-//   console.log('delete button clicked');
-// }); // end of delete button listener
